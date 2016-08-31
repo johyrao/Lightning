@@ -6,11 +6,11 @@ void setup()
 {
   size(500,300);
   strokeWeight(4);
-  background(255);
+  
 }
 void draw()
 {	
-	
+	background(255);
 	while (endX < 500) 
 	{
 		stroke((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
