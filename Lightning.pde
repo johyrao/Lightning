@@ -2,16 +2,17 @@ int startX = 250;
 int startY = 0;
 int endX = 250;
 int endY = 0;
+int cloudsX = 100;
 void setup()
 {
-  size(500,300);
+  size(500,500);
   strokeWeight(4);
-  noLoop();
+  //noLoop();
 }
 void draw()
 {	
 	background(0);
-	while (endY < 300) 
+	while (endY < 500) 
 	{
 		stroke(210,255,255);
 		endX = startX + (int)(Math.random()*18)-9;
@@ -20,6 +21,8 @@ void draw()
 		startX = endX;
 		startY = endY;
 	}
+	land();
+	clouds();
 }
 void mousePressed()
 {
@@ -27,24 +30,63 @@ void mousePressed()
 	startY = 0;
 	endX = 250;
 	endY = 0;		
-	redraw();
+	//redraw();
+}
+void land()
+{
+	fill(0, 50, 0);
+  	noStroke();
+  	beginShape();
+  	curveVertex(0,400);
+  	curveVertex(0,400);
+  	curveVertex(125,375);
+  	curveVertex(260,400);
+  	curveVertex(380,375);
+  	curveVertex(500,400);
+  	curveVertex(500,400);
+	endShape();
+	rect(0,400,500,100);
+}
+void clouds()
+{
+	fill(40);
+	ellipse(cloudsX - 200,-30,400,200);
+	ellipse(cloudsX,-30,400,200);
+	ellipse(cloudsX + 200,-30,400,200);
+	ellipse(cloudsX + 400,-30,400,200);
+	cloudsX += 5;
+	if (cloudsX > 300)
+	{
+		cloudsX = 100;
+	}
 }
 
+
+
+
+
+
+
+
+
+
+/*
 int xroof = -26;
 int yroof = -67;
 int xstairs = 1;
 int ystairs = 0;
-void fence (xfence,yfence) {
-rect(xfence+58,yfence+238,6,27);
-rect(xfence+64,yfence+245,18,20);
-rect(xfence+82,yfence+238,6,27);   
+void fence (xfence,yfence) 
+{
+	rect(xfence+58,yfence+238,6,27);
+	rect(xfence+64,yfence+245,18,20);
+	rect(xfence+82,yfence+238,6,27);   
 }
-var stairs = function (xs,ys) {
+void stairs (xs,ys) 
+{
     line(xs+190,ys+200,xs+248,ys+200);
-};
+}
+
 background(161, 216, 245);
-
-
 rect(-10,200,410,200);
 fill(242, 230, 8);
 quad(xroof+69,yroof+182,xroof+183,yroof+123,xroof+274,yroof+123,xroof+390,yroof+182);
@@ -126,3 +168,4 @@ for (var j = 48; j < 160; j+=5) {
 
 line(176,244,236,244);
 line(294,358,119,358);
+*/
